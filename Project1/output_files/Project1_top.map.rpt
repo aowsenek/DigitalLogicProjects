@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project1_top
-Wed Mar 01 11:32:07 2017
+Wed Mar 01 22:18:10 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -14,10 +14,19 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Port Connectivity Checks: "SevenSegment:Hex2"
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Parameter Settings for User Entity Instance: Arithmetic:a|full_add:a
+ 11. Parameter Settings for User Entity Instance: Arithmetic:a|subtract:s
+ 12. Port Connectivity Checks: "Comparison:c"
+ 13. Port Connectivity Checks: "Logical:l|Multiplexer:m"
+ 14. Port Connectivity Checks: "Arithmetic:a|Multiplexer:nc"
+ 15. Port Connectivity Checks: "Arithmetic:a|subtract:s"
+ 16. Port Connectivity Checks: "Arithmetic:a|full_add:a|add:genStages[0].stage"
+ 17. Port Connectivity Checks: "Arithmetic:a|full_add:a"
+ 18. Port Connectivity Checks: "SevenSegment:Mode"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -44,16 +53,16 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Mar 01 11:32:06 2017       ;
+; Analysis & Synthesis Status        ; Successful - Wed Mar 01 22:18:10 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Project1_top                                ;
 ; Top-level Entity Name              ; Project1_top                                ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 3                                           ;
-;     Total combinational functions  ; 3                                           ;
+; Total logic elements               ; 57                                          ;
+;     Total combinational functions  ; 57                                          ;
 ;     Dedicated logic registers      ; 0                                           ;
 ; Total registers                    ; 0                                           ;
-; Total pins                         ; 36                                          ;
+; Total pins                         ; 51                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -165,56 +174,70 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                  ; Library ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------+---------+
-; Project1_top.v                   ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v ;         ;
-; SevenSegment.v                   ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/SevenSegment.v ;         ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                            ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                              ; Library ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------+---------+
+; Project1_top.v                   ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v             ;         ;
+; SevenSegment.v                   ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/SevenSegment.v             ;         ;
+; Arithmetic.v                     ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v               ;         ;
+; output_files/Logical.v           ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/output_files/Logical.v     ;         ;
+; Comparison.v                     ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Comparison.v               ;         ;
+; output_files/Multiplexer.v       ; yes             ; User Verilog HDL File  ; C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/output_files/Multiplexer.v ;         ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------+---------+
 
 
-+----------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                    ;
-+---------------------------------------------+------------------+
-; Resource                                    ; Usage            ;
-+---------------------------------------------+------------------+
-; Estimated Total logic elements              ; 3                ;
-;                                             ;                  ;
-; Total combinational functions               ; 3                ;
-; Logic element usage by number of LUT inputs ;                  ;
-;     -- 4 input functions                    ; 0                ;
-;     -- 3 input functions                    ; 0                ;
-;     -- <=2 input functions                  ; 3                ;
-;                                             ;                  ;
-; Logic elements by mode                      ;                  ;
-;     -- normal mode                          ; 3                ;
-;     -- arithmetic mode                      ; 0                ;
-;                                             ;                  ;
-; Total registers                             ; 0                ;
-;     -- Dedicated logic registers            ; 0                ;
-;     -- I/O registers                        ; 0                ;
-;                                             ;                  ;
-; I/O pins                                    ; 36               ;
-;                                             ;                  ;
-; Embedded Multiplier 9-bit elements          ; 0                ;
-;                                             ;                  ;
-; Maximum fan-out node                        ; buttons[0]~input ;
-; Maximum fan-out                             ; 4                ;
-; Total fan-out                               ; 48               ;
-; Average fan-out                             ; 0.64             ;
-+---------------------------------------------+------------------+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimated Total logic elements              ; 57                ;
+;                                             ;                   ;
+; Total combinational functions               ; 57                ;
+; Logic element usage by number of LUT inputs ;                   ;
+;     -- 4 input functions                    ; 44                ;
+;     -- 3 input functions                    ; 8                 ;
+;     -- <=2 input functions                  ; 5                 ;
+;                                             ;                   ;
+; Logic elements by mode                      ;                   ;
+;     -- normal mode                          ; 57                ;
+;     -- arithmetic mode                      ; 0                 ;
+;                                             ;                   ;
+; Total registers                             ; 0                 ;
+;     -- Dedicated logic registers            ; 0                 ;
+;     -- I/O registers                        ; 0                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 51                ;
+;                                             ;                   ;
+; Embedded Multiplier 9-bit elements          ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; switches[8]~input ;
+; Maximum fan-out                             ; 22                ;
+; Total fan-out                               ; 282               ;
+; Average fan-out                             ; 1.77              ;
++---------------------------------------------+-------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                             ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------+--------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name             ; Entity Name  ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------+--------------+--------------+
-; |Project1_top              ; 3 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 36   ; 0            ; 0          ; |Project1_top                   ; Project1_top ; work         ;
-;    |SevenSegment:Hex2|     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|SevenSegment:Hex2 ; SevenSegment ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------+--------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                 ;
++-----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                          ; Entity Name  ; Library Name ;
++-----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------+--------------+--------------+
+; |Project1_top                     ; 57 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 51   ; 0            ; 0          ; |Project1_top                                                ; Project1_top ; work         ;
+;    |Arithmetic:a|                 ; 6 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Arithmetic:a                                   ; Arithmetic   ; work         ;
+;       |Multiplexer:nc|            ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Arithmetic:a|Multiplexer:nc                    ; Multiplexer  ; work         ;
+;       |full_add:a|                ; 4 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Arithmetic:a|full_add:a                        ; full_add     ; work         ;
+;          |add:genStages[1].stage| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Arithmetic:a|full_add:a|add:genStages[1].stage ; add          ; work         ;
+;          |add:genStages[2].stage| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Arithmetic:a|full_add:a|add:genStages[2].stage ; add          ; work         ;
+;    |Logical:l|                    ; 2 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Logical:l                                      ; Logical      ; work         ;
+;       |Multiplexer:m|             ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Logical:l|Multiplexer:m                        ; Multiplexer  ; work         ;
+;    |Multiplexer:M|                ; 33 (33)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|Multiplexer:M                                  ; Multiplexer  ; work         ;
+;    |SevenSegment:Hex1|            ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|SevenSegment:Hex1                              ; SevenSegment ; work         ;
+;    |SevenSegment:Hex2|            ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|SevenSegment:Hex2                              ; SevenSegment ; work         ;
+;    |SevenSegment:Mode|            ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Project1_top|SevenSegment:Mode                              ; SevenSegment ; work         ;
++-----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -233,8 +256,101 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project1_top|Multiplexer:M|Mux1 ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Project1_top|Multiplexer:M|Mux5 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Arithmetic:a|full_add:a ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; n              ; 8     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Arithmetic:a|subtract:s ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; n              ; 8     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Comparison:c"                                                                                                                                                         ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                                                               ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; o    ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (8 bits) it drives.  The 4 most-significant bit(s) in the port expression will be connected to GND. ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Logical:l|Multiplexer:m"                                                                                                                  ;
++------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                    ;
++------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------+
+; i0   ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "i0[7..4]" will be connected to GND. ;
+; i1   ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "i1[7..4]" will be connected to GND. ;
+; i2   ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "i2[7..4]" will be connected to GND. ;
++------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Arithmetic:a|Multiplexer:nc"                                                                                                                                                           ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                                                            ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; i0       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "i0[7..1]" will be connected to GND.                                         ;
+; i1       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "i1[7..1]" will be connected to GND.                                         ;
+; i2       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "i2[7..1]" will be connected to GND.                                         ;
+; i3       ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; i3[7..0] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; o        ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "o[7..1]" have no fanouts                                                               ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Arithmetic:a|subtract:s"                                                                                                                 ;
++------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                   ;
++------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; x    ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "x[7..4]" will be connected to GND. ;
+; y    ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "y[7..4]" will be connected to GND. ;
++------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Port Connectivity Checks: "Arithmetic:a|full_add:a|add:genStages[0].stage" ;
++------+-------+----------+--------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                          ;
++------+-------+----------+--------------------------------------------------+
+; cin  ; Input ; Info     ; Stuck at GND                                     ;
++------+-------+----------+--------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Arithmetic:a|full_add:a"                                                                                                                 ;
++------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                   ;
++------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; x    ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "x[7..4]" will be connected to GND. ;
+; y    ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "y[7..4]" will be connected to GND. ;
++------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "SevenSegment:Hex2"                                                                                                                         ;
+; Port Connectivity Checks: "SevenSegment:Mode"                                                                                                                         ;
 +------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type  ; Severity ; Details                                                                                                                                     ;
 +------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
@@ -247,15 +363,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 36                          ;
-; cycloneiii_lcell_comb ; 5                           ;
-;     normal            ; 5                           ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 3                           ;
+; boundary_port         ; 51                          ;
+; cycloneiii_lcell_comb ; 62                          ;
+;     normal            ; 62                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 5                           ;
+;         3 data inputs ; 8                           ;
+;         4 data inputs ; 44                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 0.86                        ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 4.85                        ;
 +-----------------------+-----------------------------+
 
 
@@ -274,7 +392,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed Mar 01 11:31:55 2017
+    Info: Processing started: Wed Mar 01 22:17:59 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off project1 -c Project1_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -282,14 +400,64 @@ Info (12021): Found 1 design units, including 1 entities, in source file project
     Info (12023): Found entity 1: Project1_top File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file sevensegment.v
     Info (12023): Found entity 1: SevenSegment File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/SevenSegment.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file arithmetic.v
+Info (12021): Found 6 design units, including 6 entities, in source file arithmetic.v
     Info (12023): Found entity 1: Arithmetic File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 1
-Warning (12019): Can't analyze file -- file output_files/Logical.v is missing
+    Info (12023): Found entity 2: mult_by_2 File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 13
+    Info (12023): Found entity 3: div_by_2 File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 18
+    Info (12023): Found entity 4: subtract File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 23
+    Info (12023): Found entity 5: add File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 33
+    Info (12023): Found entity 6: full_add File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 41
+Info (12021): Found 1 design units, including 1 entities, in source file output_files/logical.v
+    Info (12023): Found entity 1: Logical File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/output_files/Logical.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file comparison.v
+    Info (12023): Found entity 1: Comparison File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Comparison.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file output_files/multiplexer.v
+    Info (12023): Found entity 1: Multiplexer File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/output_files/Multiplexer.v Line: 1
 Info (12127): Elaborating entity "Project1_top" for the top level hierarchy
-Warning (10034): Output port "LEDs" at Project1_top.v(1) has no driver File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-Warning (10034): Output port "Hex2In" at Project1_top.v(1) has no driver File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:Hex2" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 2
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (10034): Output port "LEDs[8..0]" at Project1_top.v(1) has no driver File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:Mode" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 4
+Info (12128): Elaborating entity "Arithmetic" for hierarchy "Arithmetic:a" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 8
+Info (12128): Elaborating entity "full_add" for hierarchy "Arithmetic:a|full_add:a" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 4
+Info (12128): Elaborating entity "add" for hierarchy "Arithmetic:a|full_add:a|add:genStages[0].stage" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 53
+Info (12128): Elaborating entity "subtract" for hierarchy "Arithmetic:a|subtract:s" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 5
+Warning (10034): Output port "cout" at Arithmetic.v(28) has no driver File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 28
+Info (12128): Elaborating entity "mult_by_2" for hierarchy "Arithmetic:a|mult_by_2:m" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 6
+Warning (10034): Output port "o[0]" at Arithmetic.v(13) has no driver File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 13
+Info (12128): Elaborating entity "div_by_2" for hierarchy "Arithmetic:a|div_by_2:d" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 7
+Info (12128): Elaborating entity "Multiplexer" for hierarchy "Arithmetic:a|Multiplexer:no" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Arithmetic.v Line: 9
+Info (12128): Elaborating entity "Logical" for hierarchy "Logical:l" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 9
+Info (12128): Elaborating entity "Comparison" for hierarchy "Comparison:c" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 10
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "co[7]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[6]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[5]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[4]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "co[7]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[6]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[5]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[4]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "co[7]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[6]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[5]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[4]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "co[7]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[6]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[5]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[4]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "co[7]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[6]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[5]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[4]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "co[7]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[6]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[5]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+    Warning (12110): Net "co[4]" is missing source, defaulting to GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 3
+Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDs[0]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
     Warning (13410): Pin "LEDs[1]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
@@ -300,37 +468,27 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDs[6]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
     Warning (13410): Pin "LEDs[7]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
     Warning (13410): Pin "LEDs[8]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "LEDs[9]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex1In[1]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex2In[0]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex2In[1]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex2In[2]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex2In[3]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex2In[4]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex2In[5]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (13410): Pin "Hex2In[6]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex3In[0]" is stuck at VCC File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex3In[1]" is stuck at VCC File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex3In[2]" is stuck at VCC File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex3In[3]" is stuck at VCC File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex3In[4]" is stuck at VCC File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex3In[5]" is stuck at VCC File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex3In[6]" is stuck at VCC File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+    Warning (13410): Pin "Hex4In[1]" is stuck at GND File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 10 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "switches[0]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[1]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[2]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[3]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[4]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[5]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[6]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[7]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[8]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-    Warning (15610): No output dependent on input pin "switches[9]" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
-Info (21057): Implemented 39 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 12 input pins
-    Info (21059): Implemented 24 output pins
-    Info (21061): Implemented 3 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 35 warnings
-    Info: Peak virtual memory: 642 megabytes
-    Info: Processing ended: Wed Mar 01 11:32:07 2017
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:26
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clock" File: C:/Users/alexander/OneDrive/Documents/class/ecen/DigitalLogicProjects/Project1/Project1_top.v Line: 1
+Info (21057): Implemented 108 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 38 output pins
+    Info (21061): Implemented 57 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 55 warnings
+    Info: Peak virtual memory: 643 megabytes
+    Info: Processing ended: Wed Mar 01 22:18:10 2017
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:25
 
 
