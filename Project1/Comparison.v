@@ -1,10 +1,10 @@
 module Comparison(input [1:0] mode, input [3:0]x, input [3:0]y, output [3:0]o);
 	wire yg, xg;
 	wire [3:0] max;
-	less_than(x, y, yg);
-	less_than(y, x, xg);
-	Multiplexer(xg, y, x, 0, 0, max); // last two not used
-	Multiplexer(mode, ~(xg|yg), xg, yg, max, o);
+	less_than lt1(x, y, yg);
+	less_than lt2(y, x, xg);
+	Multiplexer m1(xg, y, x, 0, 0, max); // last two not used
+	Multiplexer m2(mode, ~(xg|yg), xg, yg, max, o);
 endmodule
 
 module less_than(input [3:0]x, input[3:0]y, output o);
