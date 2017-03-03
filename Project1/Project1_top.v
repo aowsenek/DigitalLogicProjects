@@ -58,19 +58,47 @@ module Project1_top(input [1:0]buttons, input [9:0]switches, input clock, output
 	
 	// assign magic / carry bit to light 9
 	always @ (magic[9] or carry) begin
-		LEDs[9] = ((mode[0]&mode[1]) & (magic[9] | ((magic[8] | magic[7]) & dimX2))) | ((~(mode[0]|mode[1])) & carry);
+		LEDs[9] = ((mode[1]&mode[0]) & (magic[9] | ((magic[8] | magic[7]) & dimX2))) | ((~(mode[0]|mode[1])) & carry);
 	end
 	
-	// assign digit 0 to be the first number
-	SevenSegment I0(switches[7:4], SS0);
-	// assign digit 1 to be the second number
-	SevenSegment I1(switches[3:0], SS1);
-	// assign digit 2 to be the mode
-	SevenSegment I2(mode, SS2);
-	// assign digit 3 to be the operation within the mode
-	SevenSegment I3(operation, SS3);
+//	// assign digit 0 to be the first number
+//	SevenSegment I0(switches[7:4], SS0);
+//	
+//	// assign digit 1 to be the second number
+//	SevenSegment I1(switches[3:0], SS1);
+//	
+//	// assign digit 2 to be the mode
+//	SevenSegment I2(mode, SS2);
+//	
+//	// assign digit 3 to be the operation within the mode
+//	SevenSegment I3(operation, SS3);
+
+	assign SS0 = 7'b1111111;
+	assign SS1 = 7'b1111111;
+	assign SS2 = 7'b1111111;
+	assign SS3 = 7'b1111111;
+	
 	// assign digit 4 to be the first digit of the result, or the minus sign if it's a negative number
-	SevenSegment O0(num1[7:4], SS4);
+	wire [6:0] SS4w;
+	reg [6:0] SS4r;
+	assign SS4 = SS4r;
+	SevenSegment O0(num1[7:4], SS4w);
+	always @ (num1 or carry) begin
+		if (((~mode[1])&(~mode[0])) & ((~operation[1])&operation[0]) & carry == 1'b1) begin
+			SS4r = 7'b0111111;
+		end else begin
+			SS4r = SS4w;
+		end
+	end
+	
 	// assign digit 5 to be the second digit of the result
-	SevenSegment O1(num1[3:0], SS5);
+	reg [3:0] last_digit;
+	always @ (num1[3:0]) begin
+		if (((~mode[1])&(~mode[0])) & ((~operation[1])&operation[0]) & carry == 1'b1) begin
+			last_digit = (-num1[3:0]);
+		end else begin
+			last_digit = num1[3:0];
+		end
+	end
+	SevenSegment O1(last_digit, SS5);
 endmodule 
