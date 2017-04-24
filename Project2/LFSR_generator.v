@@ -11,11 +11,11 @@ xor G1(nextbit, s_out[2], s_out[3]);
 
 assign q = nextbit;
 
-endmodule;
+endmodule
 
 //q clk rst d
-module flipflop(input clock, input rst, input d, output q);
-always @(posedge clk or posedge rst)
+module flipflop(input clock, input rst, input d, output reg q);
+always @(posedge clock or posedge rst)
 begin
 	if(rst)
 	q=0;
@@ -25,9 +25,9 @@ end
 endmodule
 
 //q control a b
-module mux2to1(input a, input b, input s, output reg m){
+module mux2to1(input a, input b, input s, output reg m);
 
 always @(s or a or b)
-q = (s&a | !s&b)
-endmodule;
-}
+m = (s&a | !s&b);
+endmodule
+
