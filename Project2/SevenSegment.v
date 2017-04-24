@@ -1,4 +1,4 @@
-module SevenSegment(input [3:0] num, output reg [6:0] out);
+module BCD_Decoder(input [3:0] num, output reg [6:0] out);
 always @ (num)
 case (num)
 	0: out = 7'b1000000;
