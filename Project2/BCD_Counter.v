@@ -1,6 +1,9 @@
-module BCD_Counter(input clk, output reg [3:0]num, output reg reset);
+module BCD_Counter(input clk, input clr, output reg [3:0]num, output reg reset);
 	always @ (posedge clk) begin
-		if (num == 9) begin
+		if (clr == 1) begin
+			num = 0;
+			reset = 1;
+		end else if (num == 9) begin
 			num = 0;
 			reset = 1;
 		end else begin
